@@ -6,6 +6,10 @@
 
 LatteLogic uses a soft, eye-friendly palette combined with a rigorous, engineering-grade structural design. It features a unique "Step-Down" header system to visualize document hierarchy and fully supports Obsidian's native Accent Color settings.
 
+![dark mode](img/dark.png)
+
+![light mode](img/light.png)
+
 ## Installation
 
 ### Manual Installation
