@@ -1,77 +1,76 @@
 /*
- * Obsidian Theme: Step-Down Dynamic (User Accent)
- * * 1. Step-down headers (Reading & Live Preview only).
- * 2. Rounded corners (Default Obsidian style).
- * 3. Dynamic Colors: Uses your Obsidian 'Accent Color' setting.
- * 4. Backgrounds: AnuPpuccin-inspired base (Latte/Macchiato).
+ * Obsidian Theme: Step-Down Professional
+ * * Design Philosophy:
+ * 1. Sharp Aesthetic: No rounded corners on headers (User Request).
+ * 2. High Readability: Enhanced Source Mode & Tables.
+ * 3. Consistent Lists: Bullets match text color.
+ * 4. User Accent: Uses Obsidian's native Accent Color setting.
  */
 
 /* ==========================================================================
-   1. Theme Variables (Backgrounds & Dynamic Accents)
+   1. Theme Variables (Backgrounds & Basics)
    ========================================================================== */
-
-/* Dark Mode (Macchiato Base) */
 .theme-dark {
-	/* Backgrounds */
 	--background-primary: #24273a;
 	--background-primary-alt: #1e2030;
 	--background-secondary: #181926;
 	--background-secondary-alt: #181926;
 	--background-modifier-border: #363a4f;
 	--background-modifier-hover: rgba(202, 211, 245, 0.1);
+	--background-modifier-active-hover: rgba(202, 211, 245, 0.15);
 
-	/* Text */
 	--text-normal: #cad3f5;
 	--text-muted: #939ab7;
 	--text-faint: #5b6078;
 
-	/* Code */
 	--code-background: #1e2030;
 	--code-normal: #cad3f5;
+
+	/* Custom features colors */
+	--table-header-bg: #363a4f;
+	--table-row-alt-bg: #2a2d3e;
+	--tag-bg: #363a4f;
+	--active-line-bg: rgba(138, 173, 244, 0.08); /* Faint accent tint */
 }
 
-/* Light Mode (Latte Base) */
 .theme-light {
-	/* Backgrounds */
 	--background-primary: #eff1f5;
 	--background-primary-alt: #e6e9ef;
 	--background-secondary: #e6e9ef;
 	--background-secondary-alt: #e6e9ef;
 	--background-modifier-border: #bcc0cc;
 	--background-modifier-hover: rgba(76, 79, 105, 0.1);
+	--background-modifier-active-hover: rgba(76, 79, 105, 0.15);
 
-	/* Text */
 	--text-normal: #4c4f69;
 	--text-muted: #6c6f85;
 	--text-faint: #9ca0b0;
 
-	/* Code */
 	--code-background: #dce0e8;
 	--code-normal: #4c4f69;
+
+	/* Custom features colors */
+	--table-header-bg: #dce0e8;
+	--table-row-alt-bg: #f4f6f9;
+	--tag-bg: #dce0e8;
+	--active-line-bg: rgba(30, 102, 245, 0.05); /* Faint accent tint */
 }
 
-/* NOTE: We do NOT override --interactive-accent here. 
-   This allows the "Accent Color" picker in Obsidian settings to work.
-*/
-
 /* ==========================================================================
-   2. Base Settings (Rounded & Modern)
+   2. Base Settings
    ========================================================================== */
 body {
-	/* Typography */
 	--font-text-size: 16px;
 	--line-height-normal: 1.6;
 	--font-monospace:
 		"源ノ角ゴシック", "JetBrains Mono", "Fira Code", monospace;
 
-	/* Radius settings removed to allow Obsidian defaults (rounded).
-       If you want to customize roundness, uncomment and adjust:
-       --radius-s: 4px;
-       --radius-m: 8px;
-    */
+	/* Keep generic UI rounded, but we will force sharp headers below */
+	--radius-s: 4px;
+	--radius-m: 8px;
 }
 
-/* Cleaner Tabs (AnuPpuccin Style) */
+/* Cleaner Tabs */
 .workspace-tab-header.is-active::before,
 .workspace-tab-header.is-active::after {
 	display: none;
@@ -79,25 +78,13 @@ body {
 
 .workspace-tab-header.is-active {
 	background-color: var(--background-primary);
-	/* Use the user's accent color for the tab indicator */
 	border-top: 3px solid var(--interactive-accent);
 	font-weight: 600;
 }
 
-/* Menu Spacing */
-.menu {
-	padding: var(--size-2-1);
-}
-.menu-item {
-	padding: var(--size-4-1) var(--size-4-2);
-}
-.menu-separator {
-	margin: var(--size-2-1) calc(var(--size-2-1) * -1);
-}
-
 /* ==========================================================================
-   3. Header Styles (Reading Mode & Live Preview ONLY)
-   Excluded: Source Mode (plain editor)
+   3. Header Styles (Reading Mode & Live Preview)
+   * Sharp corners (No border-radius)
    ========================================================================== */
 
 :is(
@@ -117,99 +104,77 @@ body {
 	margin-top: 1.5em;
 	line-height: 1.3;
 	transition: all 0.2s ease;
+
+	/* 【変更点】 角を丸くしない（Sharp） */
+	border-radius: 0 !important;
 }
 
-/* Header Colors Mapped to User Accent 
-   --text-accent is usually the same as --interactive-accent but for text.
-*/
-
-/* H1 (Title) - Strong Accent */
+/* H1 (Title) */
 :is(.markdown-preview-view h1, .is-live-preview .HyperMD-header-1) {
 	font-size: 1.8em;
 	font-weight: 700;
-
 	color: var(--text-normal);
 	border-left-width: 8px;
 	border-left-color: var(--interactive-accent);
-
 	padding-left: 0.5em;
 	border-bottom: 2px solid var(--background-modifier-border);
 }
 
-/* H2 (Chapter) - Strong Accent */
+/* H2 (Chapter) */
 :is(.markdown-preview-view h2, .is-live-preview .HyperMD-header-2) {
 	font-size: 1.6em;
 	font-weight: 600;
-
 	color: var(--text-normal);
 	border-left-width: 6px;
 	border-left-color: var(--interactive-accent);
-
 	margin-top: 2em;
 	padding-left: 0.8em;
 	border-bottom: 1px solid var(--background-modifier-border);
 }
 
-/* H3 (Section) - Text Color with Accent Border */
+/* H3 (Section) */
 :is(.markdown-preview-view h3, .is-live-preview .HyperMD-header-3) {
 	font-size: 1.4em;
 	font-weight: 600;
-
-	color: var(--text-normal); /* Slightly quieter than H1/H2 */
+	color: var(--text-normal);
 	border-left-width: 4px;
-	border-left-color: var(
-		--interactive-accent
-	); /* Keep accent for hierarchy */
-
+	border-left-color: var(--interactive-accent);
 	padding-left: 1.1em;
 	border-bottom: 1px dotted var(--text-faint);
 }
 
-/* H4 (Subsection) - Muted Border */
+/* H4 - H6 (Subsections) */
 :is(.markdown-preview-view h4, .is-live-preview .HyperMD-header-4) {
 	font-size: 1.2em;
 	font-weight: 600;
-
 	color: var(--text-normal);
 	border-left-width: 3px;
-	border-left-color: var(--text-faint); /* Drop accent for lower levels */
-
+	border-left-color: var(--text-faint);
 	padding-left: 1.4em;
 	border-bottom: 1px dotted var(--text-faint);
 }
-
-/* H5 */
 :is(.markdown-preview-view h5, .is-live-preview .HyperMD-header-5) {
 	font-size: 1.1em;
-	font-weight: 500;
-
 	color: var(--text-muted);
 	border-left-width: 2px;
 	border-left-color: var(--text-muted);
-
 	padding-left: 1.7em;
 }
-
-/* H6 */
 :is(.markdown-preview-view h6, .is-live-preview .HyperMD-header-6) {
 	font-size: 1em;
-	font-weight: 500;
-
 	color: var(--text-muted);
 	border-left-width: 2px;
 	border-left-color: var(--text-muted);
-
 	padding-left: 2em;
 }
 
-/* Hover Effects */
+/* Hover Gradient Effect */
 :is(
 	.markdown-preview-view h1,
 	.is-live-preview .HyperMD-header-1,
 	.markdown-preview-view h2,
 	.is-live-preview .HyperMD-header-2
 ):hover {
-	/* Subtle gradient using the hover modifier */
 	background: linear-gradient(
 		to right,
 		var(--background-modifier-hover),
@@ -217,26 +182,116 @@ body {
 	);
 }
 
-/* ==========================================================================
-   4. Live Preview Specific Tweaks
-   ========================================================================== */
-.is-live-preview .cm-formatting-header {
-	opacity: 0.3;
-	font-weight: normal;
-	font-size: 0.8em;
-	margin-right: 0.5em;
-	color: var(--text-muted);
+/* Mobile Responsiveness (Indents) */
+@media screen and (max-width: 768px) {
+	:is(.markdown-preview-view h1, .is-live-preview .HyperMD-header-1) {
+		padding-left: 0.3em;
+		border-left-width: 6px;
+	}
+	:is(.markdown-preview-view h2, .is-live-preview .HyperMD-header-2) {
+		padding-left: 0.4em;
+		border-left-width: 5px;
+	}
+	:is(.markdown-preview-view h3, .is-live-preview .HyperMD-header-3) {
+		padding-left: 0.5em;
+		border-left-width: 4px;
+	}
+	:is(.markdown-preview-view h4, .is-live-preview .HyperMD-header-4) {
+		padding-left: 0.6em;
+		border-left-width: 3px;
+	}
 }
 
 /* ==========================================================================
-   5. Source Mode Overrides (Safety Net)
+   4. Source Mode Improvements (可読性向上)
    ========================================================================== */
+
+/* ソースモードの見出し: 装飾はしないが、背景色と太字で区別しやすくする */
 .markdown-source-view:not(.is-live-preview) .HyperMD-header {
+	background-color: var(
+		--background-secondary-alt
+	); /* 行全体の背景を少し変える */
+	color: var(--interactive-accent); /* 文字色はアクセントカラー */
+	font-weight: 600;
+
+	/* リセット */
 	border-left: none !important;
-	padding-left: 0 !important;
+	padding-left: 0.5em !important; /* 少しだけ余白を入れると読みやすい */
 	margin-left: 0 !important;
-	background: none !important;
 	border-bottom: none !important;
-	/* Use accent color for text in source mode to differentiate headers */
-	color: var(--text-accent);
+	border-radius: 0 !important;
+
+	/* ソースモードでの見出しサイズ微調整 */
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+/* ==========================================================================
+   5. Common Theme Features (工夫機能)
+   ========================================================================== */
+
+/* 【変更点】List Bullets (Unified Color)
+   箇条書きの点をメインカラーではなく、通常のテキスト色に合わせる */
+.list-bullet:after {
+	background-color: var(--text-muted) !important;
+}
+
+/* Active Line Highlight (カーソルがある行をハイライト) */
+.cm-active {
+	background-color: var(--active-line-bg);
+}
+
+/* Styled Tables (表のデザイン) */
+.markdown-preview-view table,
+.markdown-source-view table {
+	border-collapse: collapse;
+	margin-bottom: 1em;
+}
+.markdown-preview-view th,
+.markdown-source-view th {
+	background-color: var(--table-header-bg);
+	font-weight: 600;
+	border: 1px solid var(--background-modifier-border);
+}
+.markdown-preview-view td,
+.markdown-source-view td {
+	border: 1px solid var(--background-modifier-border);
+}
+/* Striped Rows (縞模様) */
+.markdown-preview-view tr:nth-child(even),
+.markdown-source-view tr:nth-child(even) {
+	background-color: var(--table-row-alt-bg);
+}
+
+/* Styled Tags (タグのデザイン) */
+a.tag {
+	background-color: var(--tag-bg);
+	border: 1px solid var(--background-modifier-border);
+	color: var(--text-normal);
+	padding: 0px 6px;
+	border-radius: 0px; /* Sharp corners for tags too */
+	font-size: 0.9em;
+	text-decoration: none !important;
+}
+a.tag:hover {
+	background-color: var(--interactive-accent);
+	color: #fff; /* White text on hover */
+	border-color: var(--interactive-accent);
+}
+
+/* Blockquotes (引用) - Consistent with sharp theme */
+.markdown-source-view.mod-cm6 .HyperMD-quote,
+.markdown-preview-view blockquote {
+	border-left: 3px solid var(--interactive-accent);
+	background-color: var(--background-secondary-alt);
+	border-radius: 0px; /* Sharp */
+	padding: 0.5em 1em;
+}
+
+/* Completed Checkboxes (Dimmed) */
+.markdown-preview-view .task-list-item.is-checked,
+.markdown-source-view .HyperMD-task-line[data-task=":"] {
+	color: var(--text-muted);
+	text-decoration: line-through;
+	opacity: 0.8;
 }
