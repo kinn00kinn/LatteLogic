@@ -1,95 +1,75 @@
-This is a sample theme for Obsidian ([https://obsidian.md](https://obsidian.md/)).
+![](cover.png)
 
-## First Time publishing a theme?
+# LatteLogic
 
-### Quick start
+**Soft Colors. Sharp Logic.**
 
-<img width="244" alt="Pasted image 20220822135601" src="https://user-images.githubusercontent.com/693981/186000386-4f4da987-fcaf-4aa5-aed4-e34b5901255d.png">
+LatteLogic uses the soft, eye-friendly palette of [AnuPpuccin](https://www.google.com/search?q=https://github.com/AnubisNekhet/AnuPpuccin) combined with a rigorous, engineering-grade structural design. It features a unique "Step-Down" header system to visualize document hierarchy and fully supports Obsidian's native Accent Color settings.
 
-First, choose **Use this template**. That will create a copy of this repository (repo) under your Github profile. Then, you will want to _clone_ your new repository to your computer.
+## Installation
 
-Once you have the repo locally on your computer, there are a couple of placeholder fields you will need to fill in.
+### Manual Installation
 
-1. Inside the `manifest.json` file, change the "name" field to whatever you want the name of your theme to be. For example:
+1. Download the `theme.css` file from the releases.
+2. Open your Obsidian vault folder.
+3. Navigate to `.obsidian/themes/`.
+4. Create a folder named `LatteLogic` and place the `theme.css` file inside.
+5. Open Obsidian Settings > Appearance and select **LatteLogic**.
 
-  ```json
-  {
-    "name": "Moonstone",
-    "version": "0.0.0",
-    "minAppVersion": "1.0.0"
-  }
-  ```
+### BRAT Plugin
 
-2. Also inside the manifest.json file, you can include your name under next to the "author" field.
+You can also install via the [BRAT plugin](https://www.google.com/search?q=https://github.com/TfTHacker/obsidian42-brat).
 
-After you have those fields configured, all that's left to do is add your styles! All of your CSS needs to be inside the file `theme.css` which is located at root of your repository.
+1. Install **Obsidian 42 - BRAT** from the Community Plugins.
+2. Add the repository URL: `https://github.com/yourname/lattelogic`.
+3. Enable the theme in Appearance settings.
 
-## Adding your theme to the Theme Gallery
+## Key Features
 
-### Add a screenshot thumbnail
+LatteLogic is designed for clarity and structure.
 
-Inside the repository, include a screenshot thumbnail of your theme. You can name the file anything, for example `screenshot.png`. This image will be used for the small preview in the theme list.
+- **Step-Down Hierarchy:** H1 through H6 use specific indentation and border styles to create a visual "staircase," making the document structure instantly recognizable.
+- **Sharp Aesthetics:** All UI elements (tabs, buttons, tags) feature **0px border-radius** for a crisp, professional, and modern "Orthogonal" look.
+- **Native Accent Support:** No external plugins required to change colors. The theme respects the `Accent Color` defined in Obsidian's _Appearance_ settings.
+- **Mobile Optimized:** Indentation and spacing automatically adjust for smaller screens to maintain readability without wasting space.
+- **Data-Dense Tables:** Styled table headers and striped rows make reading complex data easier.
 
-Your screenshot file should be `16:9` aspect ratio.
-The recommended size is 512x288.
+## Design Philosophy
 
-### Submit your theme for review
+### The "Logic" in LatteLogic
 
-To have your theme included in the Theme Gallery, you will need to submit a Pull Request to [`obsidianmd/obsidian-releases`](https://github.com/obsidianmd/obsidian-releases#community-theme).
+Unlike themes that prioritize decoration, LatteLogic prioritizes **structure**.
 
-## Releasing Versions _(Optional)_
+- **Source Mode First:** We believe the plain text editor should be as beautiful as the preview. Headers in Source Mode are highlighted with subtle background colors and bold text.
+- **Consistent Lists:** Bullet points use the text color rather than the accent color, keeping the focus on the content, not the markers.
+- **Contextual Visibility:** Tab active states are clearly marked with a top border (AnuPpuccin style), reducing visual noise while maintaining context.
 
-If your theme is getting more and more complex, you might want to start thinking about how your theme will stay compatible with different versions of Obsidian. Introduced in v0.16 of Obsidian, themes support [Github Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository). This means that you can specify which versions of your theme are compatible with which versions of Obsidian.
+## Color Schemes
 
-### Steps for releasing the initial version of your theme (1.0.0)
+LatteLogic automatically switches base palettes depending on your Obsidian mode:
 
-1. From your theme's repository, click on "Releases".
-   
-<img width="235" alt="Pasted image 20220822145001" src="https://user-images.githubusercontent.com/693981/186000441-287a1a97-65f6-4b5f-ba66-810ceae91cd3.png">
+- **Light Mode:** Based on **Catppuccin Latte**. A low-contrast, warm light theme that is easy on the eyes.
+- **Dark Mode:** Based on **Catppuccin Macchiato**. A deep, rich dark theme that provides excellent contrast without being harsh.
 
-2. On the Releases page, there should be a button to **Draft a new Release**. Press it.
+_Note: The primary accent color is controlled entirely by you in Obsidian Settings._
 
-<img width="202" alt="Pasted image 20220822145048" src="https://user-images.githubusercontent.com/693981/186000664-6c63ae14-f685-4d39-bfe6-324f95cd9669.png">
+## Plugin Support
 
-3. Fill out the Release information form.
-	- **Choose a Tag**: Type in the name of the version number here. At the bottom of the dropdown should be a button to create a new tag with your latest theme changes. Choose this option.
-		<img width="340" alt="Pasted image 20220822145648" src="https://user-images.githubusercontent.com/693981/186000848-bd1c2619-ea09-4e70-a886-40769cda6921.png">
-	- **Release Title**: This can be the version number.
-	- **Description** _Optional_: Anything that changed
-	- **Files:** The most important part of this form is uploading the files. You can do this by dragging 'n dropping the `manifest.json` file and the `theme.css` file your for theme inside the file upload field.
+LatteLogic is built to be lightweight and compatible with most plugins. It specifically includes tailored support for:
 
-<img width="946" alt="Pasted image 20220822145356" src="https://user-images.githubusercontent.com/693981/186000772-e689ecea-c3b7-4e9d-9204-7ad62c0123aa.png">
+- **Advanced Tables:** Seamless integration with the striped row styling.
+- **Dataview:** Lists and tables render cleanly.
+- **Kanban:** tailored to match the sharp aesthetic.
+- **Calendar:** UI elements match the 0px radius design.
 
-4. Click "Publish Release."
-5. Make sure that `versions.json` is set up correctly. This file is a map.
-  ```json
-  {
-    "1.0.0": "0.16.0"
-  }
-  ```
-  
-  This means that version 1.0.0 of your theme is compatible with version 0.16.0 of Obsidian. For the initial release of your theme, you shouldn't need to make any changes to this file.
- 
-### Steps for releasing new versions
+## Contributing
 
-Releasing a new version of your theme is the same as releasing the initial version.
+If you find a bug or have a suggestion to improve the "Logic," strictly feel free to open a pull request or issue.
 
-1. From your theme's repository, click on "Releases."
-2. On the Releases page, there should be a button to **Draft a new Release**. Press it.
-3. Fill out the Release information form.
-	- **Choose a Tag**: Type in the name of the version number here. At the bottom of the dropdown should be a button to create a new tag with your latest theme changes. Choose this option.
-		<img width="333" alt="Pasted image 20220822145812" src="https://user-images.githubusercontent.com/693981/186000912-f494def9-0f67-4662-92bf-bd278082455f.png">
-	- **Release Title**: This can be the version number.
-	- **Description** _Optional_: Anything that changed
-	- **Files:** The most important part of this form is uploading the files. You can do this by dragging 'n dropping the `manifest.json` file and the `theme.css` file your for theme inside the file upload field.
+## License
 
-4. Click "Publish Release."
-5. Update the `versions.json` file in your repository. For the initial release of your theme, you probably didn't need to make any changes to the `versions.json` file. When you release subsequent versions of your theme; however, it's best practice to include the new version as entry in the versions.json file. So this might look like:
-  ```json
-  {  
-		"1.0.0": "0.16.0",
-		"1.0.1": "0.16.0"
-  }
-  ```
+LatteLogic is licensed under the MIT License. You are free to modify and redistribute the code, provided you preserve the copyright and license notice.
 
-  What's important to note here is: the new version is included as the "key" and the "value" is the minimum version of Obsidian that your theme compatible with. So if the new version of your theme is only compatible with an Insider version of Obsidian, it's important to set this value accordingly. This will prevent users on older versions of Obsidian from updating to the newer version of your theme.
+## Disclaimer
+
+This theme is provided as is. It modifies significant parts of the Obsidian interface (specifically headers and margins) to achieve its structural look. It is designed to work best with the default Obsidian font settings or monospaced fonts like JetBrains Mono.
